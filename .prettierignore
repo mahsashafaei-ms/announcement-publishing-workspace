@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+playwright-report
+test-results
+package-lock.json
+# The supplied mocks must stay byte-for-byte unchanged.
+src/mocks
+# The README is hand-formatted.
+*.md

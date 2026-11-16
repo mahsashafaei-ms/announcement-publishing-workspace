@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens (taken from the reference implementation's theme). Components use them through
+ * Tailwind utilities such as bg-surface, text-muted or rounded-card; component styling lives in
+ * the components. Only genuinely global rules follow the theme.
+ */
+@theme {
+  /* Breakpoints, mobile first. */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 37.5625rem; /* 601px: wider than a phone */
+  --breakpoint-md: 51.3125rem; /* 821px: list and details side by side */
+  --breakpoint-lg: 62.5625rem; /* 1001px: full desktop spacing */
+  --breakpoint-xl: 90.625rem; /* 1450px: large screens */
+
+  --font-sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  /* A compact type scale. */
+  --text-*: initial;
+  --text-3xs: 9px;
+  --text-2xs: 10px;
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-md: 13px;
+  --text-base: 14px;
+  --text-lg: 15px;
+  --text-xl: 18px;
+  --text-2xl: 24px;
+  --text-3xl: 27px;
+  --text-4xl: 36px;
+
+  --font-weight-book: 450;
+  --font-weight-strong: 550;
+  --font-weight-heavy: 650;
+
+  /* Neutrals */
+  --color-ink: #233b2e;
+  --color-muted: #5c695f;
+  --color-canvas: #f5f5ef;
+  --color-surface: #fffffb;
+  --color-sunken: #f8f9f3;
+  --color-panel: #ecefe5;
+  --color-tools: #eeefe7;
+  --color-line: #dce1d6;
+  --color-line-strong: #c4d0bb;
+  --color-line-active: #a8bca0;
+
+  /* Brand */
+  --color-accent: #365841;
+  --color-accent-hover: #294732;
+  --color-accent-soft: #e9eee4;
+  --color-accent-tint: #57714c;
+  --color-focus: #4c785b;
+
+  /* Status tones: text, soft background, panel background, border, timeline marker */
+  --color-success: #2c633d;
+  --color-success-soft: #e1eee0;
+  --color-success-panel: #f1f8ef;
+  --color-success-line: #d5e6d0;
+  --color-success-mark: #64865a;
+
+  --color-info: #365b79;
+  --color-info-soft: #e6eef6;
+  --color-info-panel: #f4f7fb;
+  --color-info-line: #dbe4ee;
+
+  --color-danger: #983c2e;
+  --color-danger-soft: #fae8e2;
+  --color-danger-panel: #fdf6f2;
+  --color-danger-line: #ecd7cb;
+  --color-danger-mark: #bd8068;
+  --color-danger-solid: #984c3b;
+  --color-danger-solid-hover: #7e392d;
+
+  --color-warning: #80571b;
+  --color-warning-soft: #fcf0d7;
+  --color-warning-panel: #fffbef;
+  --color-warning-line: #e8d9ae;
+  --color-warning-mark: #b18a42;
+
+  --radius-card: 9px;
+  --radius-panel: 13px;
+
+  --shadow-button: 0 2px 3px #30432b0b;
+  --shadow-card: 0 3px 10px #32482e08;
+  --shadow-dialog: 0 24px 80px #172b2630;
+}
+
+@layer base {
+  body {
+    min-width: 320px;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  /* Long labels never push a control wider than its container. */
+  button,
+  select {
+    max-width: 100%;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 4px;
+  }
+
+  /* Headings focused programmatically (tabIndex=-1) show no ring for mouse users. */
+  [tabindex="-1"]:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

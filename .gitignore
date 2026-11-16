@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+playwright-report
+test-results
+*.zip
+*.log
+.vitest
+.DS_Store
